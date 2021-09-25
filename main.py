@@ -3,23 +3,14 @@ import time
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
+from screenService import init_screen, init_listeners
 
 screen = Screen()
-screen.setup(width=600, height=600)
-screen.bgcolor('black')
-screen.title('My Snake Game ')
-screen.tracer(0)
-
-screen.listen()
+init_screen(screen)
 snake = Snake()
+init_listeners(screen, snake)
 food = Food()
 score = Scoreboard()
-
-screen.onkey(lambda: snake.change_direction("up"), "Up")
-screen.onkey(lambda: snake.change_direction("down"), "Down")
-screen.onkey(lambda: snake.change_direction("left"), "Left")
-screen.onkey(lambda: snake.change_direction("right"), "Right")
-
 screen.update()
 is_game_on = True
 
